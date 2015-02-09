@@ -47,14 +47,16 @@ int main()
 
 //[] operator
 	//s1["a"];
+
 	s1["a"].push_back("average");
+	
     //test copy const
 	LCMap<string, list<string> > s2(s1);
 	
 	//insert
 	addStr.push_back("around");
 	testbool = s1.insert("a",addStr );
-	 cout << "insert a this should be 1 " << testbool << endl;
+	 cout << "insert a this should be 0 " << testbool << endl;
 	
 	testbool = s1.insert("b",addStr );	
 	cout << "insert b this should be 0 " << testbool << endl;
@@ -85,6 +87,7 @@ int main()
 	 cout << "erase a this should be 1 " << testbool << endl;
 	
 	//in
+	 testbool = false;
 	testbool = s1.in("b");
 	cout << "ck in for b this should be 1 " << testbool << endl;
 	testbool = s1.in("f");

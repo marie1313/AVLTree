@@ -1,162 +1,42 @@
-﻿Build started 2/3/2015 10:03:31 AM.
-     1>Project "C:\Users\Marie Goff\Dropbox\Spring 2015\CS242\P1AVLTree\testerHarness\testerHarness.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2/9/2015 8:59:36 AM.
+     1>Project "C:\Users\Marie Goff\Documents\GitHub\AVLTree\P1AVLTree\testerHarness\testerHarness.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\mainTester.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Card.cpp ..\GoFishComparator.cpp ..\mainTester.cpp
          mainTester.cpp
-     1>c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(49): warning C4520: 'LCMap<K,V>::LCMapNode' : multiple default constructors specified
-                 with
-                 [
-                     K=std::string,
-                     V=int
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(300) : see reference to class template instantiation 'LCMap<K,V>::LCMapNode' being compiled
-                 with
-                 [
-                     K=std::string,
-                     V=int
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(292) : while compiling class template member function 'int &LCMap<K,V>::operator [](const K &)'
-                 with
-                 [
-                     K=std::string,
-                     V=int
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(19) : see reference to function template instantiation 'int &LCMap<K,V>::operator [](const K &)' being compiled
-                 with
-                 [
-                     K=std::string,
-                     V=int
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(18) : see reference to class template instantiation 'LCMap<K,V>' being compiled
-                 with
-                 [
-                     K=std::string,
-                     V=int
-                 ]
-     1>c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(49): warning C4520: 'LCMap<K,V,Comparator>::LCMapNode' : multiple default constructors specified
-                 with
-                 [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(238) : see reference to class template instantiation 'LCMap<K,V,Comparator>::LCMapNode' being compiled
-                 with
-                 [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(236) : while compiling class template member function 'LCMap<K,V,Comparator>::LCMap(K,V,Comparator)'
-                 with
-                 [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(30) : see reference to function template instantiation 'LCMap<K,V,Comparator>::LCMap(K,V,Comparator)' being compiled
-                 with
-                 [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(30) : see reference to class template instantiation 'LCMap<K,V,Comparator>' being compiled
-                 with
-                 [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
-                 ]
-     1>c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(49): warning C4520: 'LCMap<K,V,Comparator>::LCMapNode' : multiple default constructors specified
-                 with
-                 [
-                     K=Card,
-                     V=int,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(238) : see reference to class template instantiation 'LCMap<K,V,Comparator>::LCMapNode' being compiled
-                 with
-                 [
-                     K=Card,
-                     V=int,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(236) : while compiling class template member function 'LCMap<K,V,Comparator>::LCMap(K,V,Comparator)'
-                 with
-                 [
-                     K=Card,
-                     V=int,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(31) : see reference to function template instantiation 'LCMap<K,V,Comparator>::LCMap(K,V,Comparator)' being compiled
-                 with
-                 [
-                     K=Card,
-                     V=int,
-                     Comparator=GoFishComparator
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(31) : see reference to class template instantiation 'LCMap<K,V,Comparator>' being compiled
-                 with
-                 [
-                     K=Card,
-                     V=int,
-                     Comparator=GoFishComparator
-                 ]
-     1>c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(49): warning C4520: 'LCMap<K,V>::LCMapNode' : multiple default constructors specified
+     1>c:\users\marie goff\documents\github\avltree\p1avltree\lcmap.h(329): warning C4800: 'LCMap<K,V>::LCMapNode *' : forcing value to bool 'true' or 'false' (performance warning)
                  with
                  [
                      K=std::string,
                      V=std::list<std::string>
                  ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(238) : see reference to class template instantiation 'LCMap<K,V>::LCMapNode' being compiled
+                 c:\users\marie goff\documents\github\avltree\p1avltree\lcmap.h(328) : while compiling class template member function 'bool LCMap<K,V>::in(const K &)'
                  with
                  [
                      K=std::string,
                      V=std::list<std::string>
                  ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(236) : while compiling class template member function 'LCMap<K,V>::LCMap(K,V,Comparator)'
-                 with
-                 [
-                     K=std::string,
-                     V=std::list<std::string>,
-                     Comparator=std::less<std::string>
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(45) : see reference to function template instantiation 'LCMap<K,V>::LCMap(K,V,Comparator)' being compiled
-                 with
-                 [
-                     K=std::string,
-                     V=std::list<std::string>,
-                     Comparator=std::less<std::string>
-                 ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\maintester.cpp(45) : see reference to class template instantiation 'LCMap<K,V>' being compiled
+                 c:\users\marie goff\documents\github\avltree\p1avltree\maintester.cpp(88) : see reference to function template instantiation 'bool LCMap<K,V>::in(const K &)' being compiled
                  with
                  [
                      K=std::string,
                      V=std::list<std::string>
                  ]
-     1>c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(67): error C2664: 'bool GoFishComparator::operator ()(const Card &,const Card &)' : cannot convert parameter 1 from 'int' to 'const Card &'
-                 Reason: cannot convert from 'int' to 'const Card'
-                 No constructor could take the source type, or constructor overload resolution was ambiguous
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(58) : while compiling class template member function 'bool LCMap<K,V,Comparator>::insert(LCMap<K,V,Comparator>::LCMapNode *&,const K &,const V &)'
+                 c:\users\marie goff\documents\github\avltree\p1avltree\maintester.cpp(46) : see reference to class template instantiation 'LCMap<K,V>' being compiled
                  with
                  [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
+                     K=std::string,
+                     V=std::list<std::string>
                  ]
-                 c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(304) : see reference to function template instantiation 'bool LCMap<K,V,Comparator>::insert(LCMap<K,V,Comparator>::LCMapNode *&,const K &,const V &)' being compiled
-                 with
-                 [
-                     K=int,
-                     V=std::list<Card>,
-                     Comparator=GoFishComparator
-                 ]
-     1>c:\users\marie goff\dropbox\spring 2015\cs242\p1avltree\lcmap.h(72): error C2664: 'bool GoFishComparator::operator ()(const Card &,const Card &)' : cannot convert parameter 1 from 'const int' to 'const Card &'
-                 Reason: cannot convert from 'const int' to 'const Card'
-                 No constructor could take the source type, or constructor overload resolution was ambiguous
-     1>Done Building Project "C:\Users\Marie Goff\Dropbox\Spring 2015\CS242\P1AVLTree\testerHarness\testerHarness.vcxproj" (Build target(s)) -- FAILED.
+         GoFishComparator.cpp
+         Card.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marie Goff\Documents\GitHub\AVLTree\P1AVLTree\testerHarness\Debug\testerHarness.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marie Goff\Documents\GitHub\AVLTree\P1AVLTree\testerHarness\Debug\testerHarness.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marie Goff\Documents\GitHub\AVLTree\P1AVLTree\testerHarness\Debug\testerHarness.lib" /MACHINE:X86 Debug\Card.obj
+         Debug\GoFishComparator.obj
+         Debug\mainTester.obj
+         testerHarness.vcxproj -> C:\Users\Marie Goff\Documents\GitHub\AVLTree\P1AVLTree\testerHarness\Debug\testerHarness.exe
+     1>Done Building Project "C:\Users\Marie Goff\Documents\GitHub\AVLTree\P1AVLTree\testerHarness\testerHarness.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.35
+Time Elapsed 00:00:08.46
