@@ -7,6 +7,7 @@
 #include <list>
 #include <functional>
 #include <cstddef>
+#include <utility>
 
 
 template <typename K, typename V, typename Comparator = std::less<K> >
@@ -25,15 +26,7 @@ class LCMap{
 			LCMapNode* right_;
 			LCMapNode* parent_;
 			
-			LCMapNode()
-			{
-   
-			left_ = NULL;
-			right_ = NULL;
-			parent_ = NULL;
-			height_=0;
-			}
-			 LCMapNode(K key, V value, LCMapNode* left=NULL, LCMapNode* right=NULL,LCMapNode* parent=NULL, int height = 0)
+			LCMapNode(K key=K(), V value=V(), LCMapNode* left=NULL, LCMapNode* right=NULL,LCMapNode* parent=NULL, int height = 0)
 			 {
 			   key_ = key;
 			   value_ = value;
@@ -49,8 +42,10 @@ class LCMap{
 			   key_ = orig.key_;
 			   left_ = orig.left_;
 			   right_ = orig.right_;
+			   parent_ = orig.parent_;
 			   height_ = orig.height_;
 			 }
+
 	
  };
 
@@ -93,8 +88,8 @@ void rotateLeft(LCMapNode*& node)
 	LCMapNode *k1 = node->left_;
 	node->left_ = k1->right_;
 	k1->right_ =node;
-	//node->height_ = std::max(height( node->left_->key_), height( node->right_->key_)) +1;
-	//k1->height_ = std::max(height( k1->left_->key_),node->height_) +1;
+	node->height_ = std::max(height( node->left_), height( node->right_)) +1;
+	k1->height_ = std::max(height( k1->left_),node->height_) +1;
 	node = k1;
 }
 
@@ -104,8 +99,8 @@ void rotateRight(LCMapNode*& node)
 	LCMapNode *k1 = node->right_;
 	node->right_ = k1->left_;
 	k1->left_ =node;
-	//node->height_ = std::max( height(node->right_->key_), height( node->left_->key_)) +1;
-	//k1->height_ = std::max(height( k1->right_->key_),node->height_) +1;
+	node->height_ = std::max( height(node->right_), height( node->left_)) +1;
+	k1->height_ = std::max(height( k1->right_),node->height_) +1;
 	node = k1;
 	//add parent pointer update
 }
@@ -179,6 +174,16 @@ LCMapNode* findMin(LCMapNode* pNode)//only finds the smallest
    return pNode;
  }
 
+LCMapNode* findMax(LCMapNode* pNode)//only finds the largest
+ {
+   //if(pNode != NULL && pNode->right_ != NULL)
+   if(pNode->right_	!= NULL)
+     {
+       pNode = findMax(pNode->right_);
+     }
+   return pNode;
+ }
+
 void removeNodeSimple(LCMapNode*& cursor)
  {
    if(cursor->left_==NULL && cursor->right_ == NULL)
@@ -189,13 +194,15 @@ void removeNodeSimple(LCMapNode*& cursor)
    else if(cursor->left_ != NULL)
      {
        LCMapNode* tmp = cursor;
-       cursor = cursor->left_;		
+       cursor = cursor->left_;
+	   cursor->parent_=tmp->parent_;
        delete tmp;
      }
      else if(cursor->right_ != NULL)
      {
        LCMapNode* tmp = cursor;
-       cursor = cursor->right_;		
+       cursor = cursor->right_;	
+	   cursor->parent_=tmp->parent_;
        delete tmp;
      }
  }
@@ -263,14 +270,27 @@ void clear(LCMapNode*& node)
 
  LCMapNode* copy(LCMapNode* node)
  {
-   //need a node to copy to
-   LCMapNode* copyNode = NULL;
-   
+	 //need a node to copy to
+	LCMapNode* copyNode=NULL;
    //check to see if node is null
    if(node != NULL)
      {//if it's not null copy it all the way down the tree
-       copyNode = new LCMapNode(node->key_, node->value_, copy(node->left_), copy(node->right_), copy(node->parent_));
-     }	
+		copyNode = new LCMapNode(*node);
+		copyNode->key_ = node->key_;
+		copyNode->value_= node->value_;
+		copyNode->left_= copy(node->left_);
+		copyNode->right_= copy(node->right_);
+		copyNode->height_= node->height_;
+		if(copyNode->left_ != NULL)
+		{
+			copyNode->left_->parent_ = copyNode;
+		}
+		if(copyNode->right_ != NULL)
+		{
+			copyNode->right_->parent_=copyNode;
+		}
+
+   }	
    return copyNode;
  }
  
@@ -398,46 +418,79 @@ void clear(LCMapNode*& node)
   /*returns the height of the node that stores this key*/
  int height(const K& key)
  {
-	 LCMapNode* node;
-	 node=lookup(key,root_);
-	 return height(node);   
+	LCMapNode* node=lookup(key,root_);
+	int retval = -1;
+	if(node != NULL)
+	{
+		retval = height(node);
+	}
+	return retval;   
  }
 
 
- 
-	class iterator
+  
+	class Iterator
 	{
 		public:
-		iterator(){postOrderStart(cursor_);}
-		
-		K& key(){return cursor_->key_;}
-		V& value(){return cursor_->value_;}
-		void operator++()
-		{
-			
-		}
-		
+			Iterator(LCMapNode* cursor = NULL): cursor_(cursor){}
+			/* Derefernces the iterator */
+			std::pair<K,V> operator *() const
+			{
+				std::pair<K,V> retPair(cursor_->key_, cursor_->value_);
+				return retPair;
+			}
+			/* prefix increment: increment then return reference to current
+			iterator */
+			Iterator& operator ++()
+			{
+				
+				return *this;
+			}
+			/* postfix increment: should return current iterator and then
+			increment */
+			Iterator operator ++(int)
+			{
+				Iterator current = *this;
+				++ *this;
+				return current;
+			}
+			/* equality */
+			bool operator ==(const Iterator& rhs) const
+			{return cursor_ == rhs.cursor_; }
+			/* inequality */
+			bool operator !=(const Iterator& rhs) const
+				 { return !(*this == rhs); }
+
 		private:
+			LCMapNode* cursor_;
 
-		LCMapNode* cursor_;
+			LCMapNode* Inorder(LCMapNode*& node)
+			{
+				LCMapNode* nodeParent=NULL;
+				if(node != NULL)
+				{
+					nodeParent = node->parent_;
 
-		void postOrderStart(LCMapNode*& cursor)
-		{
-			//recurse until we get to the node that will
-			//be the first in the post order traversal
-			
-			//Check the left child
-			if(cursor->left != NULL)//I don't think we can use != on left or right children only <
-			{
-				postOrderStart(cursor->left_);
+					node = Inorder(node->left_);
+					nodeParent = node->parent_;
+					node = Inorder(node->right_);
+				}
+				return nodeParent;
 			}
-			//Check the right child 
-			if(cursor->right_ != NULL)
-			{
-				postOrderStart(cursor->right);
-			}
-		}
+
 	};
+
+	 /* returns a forward iterator that points to the first item. must perform an in-order traversal*/
+	 Iterator begin()
+	{ 
+		Iterator iter = findMin(root_);
+		return iter;	
+	}
+		/* returns a forward iterator that points to one item past the last */
+	Iterator end()
+	{
+		return Iterator(NULL);
+	}
 
 };
 

@@ -101,6 +101,13 @@ int main()
         cout << *it << " ";
     cout << m.size() << endl;
 
+	std::pair<int, char> mypair;
+	for(LCMap<int, char>::Iterator iter = m.begin(); iter != m.end(); ++iter)
+	{
+		mypair = *iter;
+		cout << mypair.first << " ";
+	}
+
     for (list<int>::iterator it = copyKeys.begin(); it != copyKeys.end(); ++it)
         cout << *it << " ";
     cout << copyKeys.size() << endl;
@@ -122,6 +129,8 @@ int main()
     for (list<int>::iterator it = keys.begin(); it != keys.end(); ++it)
         cout << *it << " ";
     cout << m.size() << endl;
+
+	
 
     for (list<int>::iterator it = copyKeys.begin(); it != copyKeys.end(); ++it)
         cout << *it << " ";
